@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Upoređivanje Teksta</h2>
+  
+    <textarea [(ngModel)]="text1" placeholder="Unesite prvi tekst"></textarea>
+  
+    <textarea [(ngModel)]="text2" placeholder="Unesite drugi tekst"></textarea>
+  
+    <button (click)="submit()">Pošalji</button>
+  
+    <div *ngIf="similarityScore !== null">
+      <h3>Rezultat:</h3>
+      <p>Semantička sličnost: {{ similarityScore }}</p>
+    </div>
+  </div>
+  

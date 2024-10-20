@@ -1,0 +1,14 @@
+<div class="history-container">
+    <h2>Search History</h2>
+
+    <div *ngIf="historyData.length > 0; else noHistory">
+        <ul>
+            <li *ngFor="let entry of historyData">{{ entry }}</li>
+        </ul>
+        <button (click)="clearHistory()">Clear History</button>
+    </div>
+
+    <ng-template #noHistory>
+        <p>No history available.</p>
+    </ng-template>
+</div>

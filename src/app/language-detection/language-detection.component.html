@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Detekcija Jezika</h2>
+
+    <textarea [(ngModel)]="inputText" placeholder="Unesite tekst za detekciju jezika"></textarea>
+
+    <label>
+        <input type="checkbox" [(ngModel)]="clean" />
+        Ukloni linkove, email adrese i hashtagove
+    </label>
+
+    <button (click)="submit()">Pošalji</button>
+
+    <div *ngIf="detectionResult">
+        <h3>Rezultat Detekcije Jezika:</h3>
+        <ul>
+            <li *ngFor="let language of detectionResult">
+                Jezik:
+                <img src="https://flagcdn.com/{{ language.lang | lowercase }}.svg" width="30" alt="Ukraine">
+                {{ language.lang }} (Pouzdanost: {{ language.confidence }})
+            </li>
+        </ul>
+    </div>
+</div>

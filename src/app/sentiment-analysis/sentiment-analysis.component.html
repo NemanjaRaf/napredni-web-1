@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Sentimentalna Analiza</h2>
+
+    <textarea [(ngModel)]="inputText" placeholder="Unesite tekst za analizu"></textarea>
+
+    <label for="lang">Izaberi jezik:</label>
+    <select [(ngModel)]="selectedLang" id="lang">
+        <option value="auto">Automatski</option>
+        <option value="en">Engleski</option>
+        <option value="it">Italijanski</option>
+    </select>
+
+    <button (click)="submit()">Pošalji</button>
+
+    <div *ngIf="analysisResult">
+        <h3>Rezultat Analize:</h3>
+        <p>Sentiment: <strong [ngStyle]="{'color': sentimentColor}">{{ analysisResult.sentiment.type }}</strong></p>
+        <p>Skor: {{ analysisResult.sentiment.score }}</p>
+    </div>
+</div>

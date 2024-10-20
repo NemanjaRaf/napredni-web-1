@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Entity Extraction</h2>
+  
+    <textarea [(ngModel)]="inputText" placeholder="Unesite tekst za analizu"></textarea>
+  
+    <label for="minConfidence">Minimalna pouzdanost (min_confidence): {{minConfidence}}</label>
+    <input type="range" id="minConfidence" [(ngModel)]="minConfidence" min="0" max="1" step="0.1">
+  
+    <div>
+      <label><input type="checkbox" [(ngModel)]="includeImages" /> Uključi slike</label>
+      <label><input type="checkbox" [(ngModel)]="includeAbstracts" /> Uključi apstrakte</label>
+      <label><input type="checkbox" [(ngModel)]="includeCategories" /> Uključi kategorije</label>
+    </div>
+  
+    <button (click)="submit()">Pošalji</button>
+  
+    <div *ngIf="entities">
+      <h3>Rezultati:</h3>
+
+      <div *ngFor="let entity of entities">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ entity.spot }}</h5>
+            <div *ngIf="includeImages && entity.image">
+              <img [src]="entity.image.full" alt="Image" height="200" />
+            </div>
+            <div *ngIf="includeAbstracts && entity.abstract">
+              <p class="card-text">{{ entity.abstract }}</p>
+            </div>
+            <div *ngIf="includeCategories && entity.categories">
+                <b>Kategorije</b>
+              <p class="card-text">{{ entity.categories }}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  
